@@ -1,12 +1,19 @@
 import React from 'react';
 import Chats from "./components/Chats";
+import StatusBar from './components/StatusBar';
 import {View, Text, Image, ScrollView, TextInput} from 'react-native';
-
+import namelist from './RandomNames';
 const App = () => {
+  
   return (
-    <ScrollView>
-      <Chats image="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=800" name="Saurabh"/>
+    <View>
+    <StatusBar/>
+    <ScrollView style={{height: '85%'}}>
+      { 
+        namelist.map((element, index) => <Chats name={element.name} message={element.message} image={element.image} key={index}/>)
+      }
     </ScrollView>
+    </View>
   );
 };
 
